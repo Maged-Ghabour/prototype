@@ -1,0 +1,41 @@
+<?php
+
+use App\Http\Controllers\PrototypeController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group.
+|
+*/
+
+/**
+ * Root redirect: send visitors directly to the admin panel.
+ * This is an admin-only tool so there is no public homepage.
+ */
+Route::get('/', function () {
+    return redirect()->route('portfolio');
+});
+
+// Portfolio and Case Study routes
+Route::get('/portfolio', \App\Livewire\PortfolioPage::class)->name('portfolio');
+Route::get('/case-study/{slug}', [\App\Http\Controllers\CaseStudyController::class, 'show'])->name('case-study.show');
+
+/**
+ * Public Prototype Preview Route
+ *
+ * URL:    /p/{slug}
+ * Method: GET
+ * Name:   prototype.preview
+ *
+ * Accessible to anyone (no authentication required).
+ * Returns 404 if the prototype does not exist or is_public = false.
+ */
+Route::get('/p/{slug}', [PrototypeController::class, 'show'])
+    ->name('prototype.preview')
+    ->where('slug', '[a-z0-9\-]+'); // Only allow valid slug characters

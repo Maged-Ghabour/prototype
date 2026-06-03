@@ -1,0 +1,115 @@
+/*
+ * filament-rtl.css
+ * ─────────────────────────────────────────────────────────────────
+ * تنسيقات RTL مخصصة لواجهة Filament مع خط Cairo العربي
+ * يُطبَّق تلقائياً عندما تكون APP_LOCALE=ar
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+/* ── استيراد خط Cairo من Google Fonts ───────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
+
+/* ── تطبيق خط Cairo على كامل الصفحة ─────────────────────────────── */
+html,
+body,
+* {
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+/* ── الاتجاه الأساسي RTL ──────────────────────────────────────────── */
+html,
+body {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* ── Filament الشريط الجانبي والرأس ─────────────────────────────── */
+[x-data],
+.fi-sidebar,
+.fi-topbar,
+.fi-main,
+.fi-header,
+.fi-footer,
+.fi-sidebar-nav,
+.fi-nav-item {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+/* ── الجدول ──────────────────────────────────────────────────────── */
+.fi-ta-table,
+.fi-ta-header-cell,
+.fi-ta-cell {
+    direction: rtl;
+    text-align: right !important;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+/* ── النماذج والحقول ─────────────────────────────────────────────── */
+.fi-fo-field-wrp-label,
+.fi-fo-field-wrp,
+.fi-input-wrp,
+.fi-section,
+.fi-section-header,
+.fi-section-content {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+/* ── الأزرار والإشعارات والقوائم المنسدلة ───────────────────────── */
+.fi-btn,
+.fi-no,
+.fi-dropdown-panel,
+.fi-badge,
+.fi-pagination {
+    direction: rtl;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+/* ── Breadcrumbs ─────────────────────────────────────────────────── */
+.fi-breadcrumbs {
+    direction: rtl;
+    flex-direction: row-reverse;
+}
+
+/* ── صفحة تسجيل الدخول ──────────────────────────────────────────── */
+.fi-simple-layout,
+.fi-auth-login-form,
+.fi-auth-login-form .fi-input-wrp {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+/* ── البطاقات والإحصاءات ─────────────────────────────────────────── */
+.fi-wi-stats-overview-stat,
+.fi-card {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+/* ── ضبط أوزان الخط لـ Cairo ─────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+.fi-section-header-heading,
+.fi-ta-header-cell-label {
+    font-weight: 600;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+.fi-brand-name {
+    font-weight: 700;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
+}
+
+/* ── حقول الكود: تبقى LTR مع خط Monospace ────────────────────────── */
+textarea[dir="ltr"],
+input[dir="ltr"],
+.code-editor,
+pre, code {
+    direction: ltr !important;
+    text-align: left !important;
+    font-family: 'Courier New', Consolas, Monaco, monospace !important;
+}
