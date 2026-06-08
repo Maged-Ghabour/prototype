@@ -23,8 +23,15 @@ Route::get('/', function () {
 });
 
 // Portfolio and Case Study routes
-Route::get('/portfolio', \App\Livewire\PortfolioPage::class)->name('portfolio');
+Route::get('/portfolio', function () {
+    $categories = \App\Models\Category::orderBy('sort_order')->get();
+    $caseStudies = \App\Models\CaseStudy::where('is_published', true)->latest()->take(6)->get();
+    return view('profile', compact('categories', 'caseStudies'));
+})->name('portfolio');
 Route::get('/case-study/{slug}', [\App\Http\Controllers\CaseStudyController::class, 'show'])->name('case-study.show');
+
+// Category route
+Route::get('/category/{category:slug}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('category.show');
 
 /**
  * Public Prototype Preview Route
