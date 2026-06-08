@@ -50,7 +50,7 @@ class CategoriesTable
             ])
             ->defaultSort('sort_order')
             ->actions([
-                \Filament\Tables\Actions\Action::make('view')
+                \Filament\Actions\Action::make('view')
                     ->label('عرض')
                     ->icon('heroicon-o-eye')
                     ->url(fn (\App\Models\Category $record): string => route('category.show', $record))
