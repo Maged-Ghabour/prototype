@@ -6,32 +6,6 @@
 <title>فكرتك الرقمية — وكالة تسويق رقمي | جدة</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                fontFamily: {
-                    sans: ['Tajawal', 'sans-serif'],
-                },
-                colors: {
-                    primary: {
-                        50: '#FEF2EA',
-                        100: '#FDDEC8',
-                        200: '#F7924A',
-                        300: '#F26522',
-                        400: '#F26522',
-                        500: '#F26522',
-                        600: '#D95A1E',
-                        700: '#BF4F1B',
-                        800: '#A64517',
-                        900: '#8C3A13',
-                    }
-                }
-            }
-        }
-    }
-</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -1270,6 +1244,144 @@ body{font-family:'Tajawal',sans-serif;background:var(--wh);color:var(--dk);direc
             <rect x="2" y="3" width="20" height="14" rx="2"/>
             <path d="M8 21h8M12 17v4"/>
           </svg>
+        </div>
+        <div class="svc-card-name">إنشاء المتاجر الإلكترونية</div>
+        <div class="svc-card-desc">سلّة، زد، WooCommerce — متجر يحوّل الزائر لمشترٍ</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-bl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.7">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">إدارة السوشيال ميديا</div>
+        <div class="svc-card-desc">محتوى منتظم، تفاعل حقيقي، نمو مستدام لحساباتك</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-or">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.7">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">المونتاج والموشن جرافيك</div>
+        <div class="svc-card-desc">فيديوهات تسويقية تحوّل المشاهد إلى عميل</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-bl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.7">
+            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+            <path d="M2 2l7.586 7.586"/>
+            <circle cx="11" cy="11" r="2"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">الهوية البصرية والجرافيك</div>
+        <div class="svc-card-desc">هوية بصرية تجعل علامتك لا تُنسى في ذهن العميل</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-or">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.7">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">التسويق عبر المؤثرين</div>
+        <div class="svc-card-desc">وصول مستهدف عبر مؤثرين موثوقين يبنون الثقة بعلامتك</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-bl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.7">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <path d="M12 18h.01"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">إنشاء تطبيقات الجوال</div>
+        <div class="svc-card-desc">تطبيق متجرك على iOS وAndroid بتجربة مستخدم سلسة</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     TICKER
+══════════════════════════════════ -->
+<div class="ticker-section">
+  <div class="ticker-badge">
+    <span class="ticker-badge-line1">القطاعات</span>
+    <span class="ticker-badge-line2">التي خدمناها</span>
+  </div>
+  <div class="ticker-fr"></div>
+  <div class="ticker-fl"></div>
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- ══════════════════════════════════
+     CASE STUDIES
+══════════════════════════════════ -->
+<section class="cases-section" id="cases">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">نتائج موثّقة بالأرقام</span>
+      <h2 class="sec-h2">دراسات <span>الحالة</span></h2>
+      <p class="sec-body">شركاؤنا يثقون بنا لأن نتائجنا تتحدث عن نفسها — اضغط لرؤية الكيس ستدي كاملاً</p>
+    </div>
+
+    <div class="cases-grid" id="casesGrid">
+      @foreach($caseStudies as $i => $case)
+        @php
+           $delay = $i * 0.07;
+           $colors = [
+               ['nc' => 'np-or', 'band' => '#F26522'],
+               ['nc' => 'np-bl', 'band' => '#2B5BA8'],
+               ['nc' => 'np-tl', 'band' => '#0A8A7A'],
+               ['nc' => 'np-pu', 'band' => '#6D28D9'],
+           ];
+           $color = $colors[$i % count($colors)];
+        @endphp
+        <a class="case-card reveal" href="{{ route('case-study.show', $case->slug) }}" style="transition-delay:{{ $delay }}s">
+          <div style="height:4px;background:{{ $color['band'] }};"></div>
+          <div class="case-top">
+            <span class="niche-pill {{ $color['nc'] }}">
+              <svg width="9" height="9" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
+              {{ $case->industry ?? 'عام' }}
+            </span>
+            <div class="case-arrow-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-avatar-row">
+              <div class="case-avatar" style="background:{{ $color['band'] }}18;border-color:{{ $color['band'] }}33;">
+                @if($case->featured_image)
+                  <img src="{{ asset('storage/' . $case->featured_image) }}" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
+                @else
+                  <svg viewBox="0 0 24 24" fill="none" stroke="{{ $color['band'] }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                  </svg>
+                @endif
+              </div>
+              <div>
+                <div class="case-client">{{ Str::limit($case->client_name, 20) }}</div>
+                <div class="case-sub">{{ Str::limit($case->project_name, 25) }}</div>
+              </div>
+            </div>
+            <div class="case-divider"></div>
+            <div style="font-size:13px; color:var(--muted); line-height:1.6; flex:1; margin-bottom:12px;">
+              {{ Str::limit(strip_tags($case->short_description), 80) }}
+            </div>
+            <div class="stags">
+               <span class="stag">قراءة المزيد</span>
             </div>
           </div>
         </a>
@@ -1323,35 +1435,26 @@ track.innerHTML=all.map(s=>`
 
 /* ─── CASES RENDERED VIA BLADE ─── */
 
-<script>
 /* ─── MOBILE DRAWER ─── */
 const drawer=document.getElementById('mobDrawer');
 const panel=document.getElementById('mobPanel');
 const overlay=document.getElementById('mobOverlay');
 
 function openDrawer(){
-  if(drawer && panel) {
-    drawer.style.display='block';
-    document.body.style.overflow='hidden';
-    setTimeout(()=>panel.classList.add('open'),10);
-  }
+  drawer.style.display='block';
+  document.body.style.overflow='hidden';
+  setTimeout(()=>panel.classList.add('open'),10);
 }
 
 function closeDrawer(){
-  if(panel && drawer) {
-    panel.classList.remove('open');
-    document.body.style.overflow='';
-    setTimeout(()=>{ drawer.style.display='none'; },300);
-  }
+  panel.classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(()=>{ drawer.style.display='none'; },300);
 }
 
-const mobToggle = document.getElementById('mobToggle');
-if(mobToggle) mobToggle.addEventListener('click',openDrawer);
-
-const mobClose = document.getElementById('mobClose');
-if(mobClose) mobClose.addEventListener('click',closeDrawer);
-
-if(overlay) overlay.addEventListener('click',closeDrawer);
+document.getElementById('mobToggle').addEventListener('click',openDrawer);
+document.getElementById('mobClose').addEventListener('click',closeDrawer);
+overlay.addEventListener('click',closeDrawer);
 
 /* ─── SCROLL REVEAL ─── */
 const obs=new IntersectionObserver(entries=>{

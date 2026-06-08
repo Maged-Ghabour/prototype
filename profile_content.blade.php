@@ -1,5 +1,3 @@
-@extends('layouts.public')
-@section('content')
 <!-- ══════════════════════════════════
      ABOUT HERO
 ══════════════════════════════════ -->
@@ -72,21 +70,47 @@
       <div class="panel-label">خدماتنا الأساسية</div>
       <div class="svc-list">
 
-        @foreach($marketingServices->take(6) as $service)
-          @php
-             $link = $service->category ? route('category.show', $service->category->slug) : '#services';
-             $colorClass = $service->color_theme == 'bl' ? 'si-bl' : 'si-or';
-             $strokeColor = $service->color_theme == 'bl' ? '#2B5BA8' : '#F26522';
-          @endphp
-          <a href="{{ $link }}" class="svc-item" style="text-decoration: none; color: inherit;">
-            <div class="svc-icon-box {{ $colorClass }}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="{{ $strokeColor }}" stroke-width="1.8">
-                {!! $service->icon_svg !!}
-              </svg>
-            </div>
-            <span class="svc-name">{{ $service->title }}</span>
-          </a>
-        @endforeach
+        <div class="svc-item">
+          <div class="svc-icon-box si-or">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.8"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <span class="svc-name">إدارة الحملات الإعلانية المدفوعة</span>
+        </div>
+
+        <div class="svc-item">
+          <div class="svc-icon-box si-bl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <span class="svc-name">تحسين محركات البحث SEO</span>
+        </div>
+
+        <div class="svc-item">
+          <div class="svc-icon-box si-or">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <span class="svc-name">إنشاء وتطوير المتاجر الإلكترونية</span>
+        </div>
+
+        <div class="svc-item">
+          <div class="svc-icon-box si-bl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </div>
+          <span class="svc-name">إدارة السوشيال ميديا</span>
+        </div>
+
+        <div class="svc-item">
+          <div class="svc-icon-box si-or">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="svc-name">الهوية البصرية وتصميم الجرافيك</span>
+        </div>
+
+        <div class="svc-item">
+          <div class="svc-icon-box si-bl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <span class="svc-name">التسويق عبر المؤثرين</span>
+        </div>
 
       </div>
       <div class="panel-cta">
@@ -115,22 +139,94 @@
 
     <div class="svcs-grid">
 
-      @foreach($marketingServices as $service)
-        @php
-           $link = $service->category ? route('category.show', $service->category->slug) : '#services';
-           $iconClass = $service->color_theme == 'bl' ? 'icon-bl' : 'icon-or';
-           $strokeColor = $service->color_theme == 'bl' ? '#2B5BA8' : '#F26522';
-        @endphp
-        <a href="{{ $link }}" class="svc-card reveal" style="text-decoration: none; color: inherit; display: block;">
-          <div class="svc-card-icon {{ $iconClass }}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="{{ $strokeColor }}" stroke-width="1.7">
-              {!! $service->icon_svg !!}
-            </svg>
-          </div>
-          <div class="svc-card-name">{{ $service->title }}</div>
-          <div class="svc-card-desc">{{ $service->description }}</div>
-        </a>
-      @endforeach
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-or">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.7">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">إدارة الحملات الإعلانية</div>
+        <div class="svc-card-desc">TikTok · Meta · Snapchat · Google Ads بأعلى ROAS ممكن</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-bl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.7">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            <path d="M11 8v3l2 2"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">تحسين محركات البحث SEO</div>
+        <div class="svc-card-desc">تصدّر جوجل بنتائج طبيعية 100% بلا إعلانات مدفوعة</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-or">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.7">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">إنشاء المتاجر الإلكترونية</div>
+        <div class="svc-card-desc">سلّة، زد، WooCommerce — متجر يحوّل الزائر لمشترٍ</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-bl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.7">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">إدارة السوشيال ميديا</div>
+        <div class="svc-card-desc">محتوى منتظم، تفاعل حقيقي، نمو مستدام لحساباتك</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-or">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.7">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">المونتاج والموشن جرافيك</div>
+        <div class="svc-card-desc">فيديوهات تسويقية تحوّل المشاهد إلى عميل</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-bl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.7">
+            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+            <path d="M2 2l7.586 7.586"/>
+            <circle cx="11" cy="11" r="2"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">الهوية البصرية والجرافيك</div>
+        <div class="svc-card-desc">هوية بصرية تجعل علامتك لا تُنسى في ذهن العميل</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-or">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F26522" stroke-width="1.7">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">التسويق عبر المؤثرين</div>
+        <div class="svc-card-desc">وصول مستهدف عبر مؤثرين موثوقين يبنون الثقة بعلامتك</div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-card-icon icon-bl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B5BA8" stroke-width="1.7">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <path d="M12 18h.01"/>
+          </svg>
+        </div>
+        <div class="svc-card-name">إنشاء تطبيقات الجوال</div>
+        <div class="svc-card-desc">تطبيق متجرك على iOS وAndroid بتجربة مستخدم سلسة</div>
+      </div>
 
     </div>
   </div>
@@ -260,32 +356,3 @@ track.innerHTML=all.map(s=>`
   </div>`).join('');
 
 /* ─── CASES RENDERED VIA BLADE ─── */
-
-/* ─── MOBILE DRAWER ─── */
-const drawer=document.getElementById('mobDrawer');
-const panel=document.getElementById('mobPanel');
-const overlay=document.getElementById('mobOverlay');
-
-function openDrawer(){
-  drawer.style.display='block';
-  document.body.style.overflow='hidden';
-  setTimeout(()=>panel.classList.add('open'),10);
-}
-
-function closeDrawer(){
-  panel.classList.remove('open');
-  document.body.style.overflow='';
-  setTimeout(()=>{ drawer.style.display='none'; },300);
-}
-
-document.getElementById('mobToggle').addEventListener('click',openDrawer);
-document.getElementById('mobClose').addEventListener('click',closeDrawer);
-overlay.addEventListener('click',closeDrawer);
-
-/* ─── SCROLL REVEAL ─── */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
-},{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
-@endsection

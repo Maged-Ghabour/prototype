@@ -26,7 +26,8 @@ Route::get('/', function () {
 Route::get('/portfolio', function () {
     $categories = \App\Models\Category::orderBy('sort_order')->get();
     $caseStudies = \App\Models\CaseStudy::where('is_published', true)->latest()->take(6)->get();
-    return view('profile', compact('categories', 'caseStudies'));
+    $marketingServices = \App\Models\MarketingService::where('is_active', true)->orderBy('sort_order')->get();
+    return view('profile', compact('categories', 'caseStudies', 'marketingServices'));
 })->name('portfolio');
 Route::get('/case-study/{slug}', [\App\Http\Controllers\CaseStudyController::class, 'show'])->name('case-study.show');
 
