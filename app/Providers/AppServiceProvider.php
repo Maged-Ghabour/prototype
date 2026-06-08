@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        \Illuminate\Support\Facades\View::composer('layouts.public', function ($view) {
+            $view->with('categories', \App\Models\Category::orderBy('sort_order')->get());
+        });
     }
 }
