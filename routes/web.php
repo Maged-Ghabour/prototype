@@ -28,6 +28,15 @@ Route::get('/run-migrations', function () {
     return 'Migrations and Seeders ran successfully. <a href="/">Go back</a>';
 });
 
+// Fallback route to serve uploaded files on Shared Hosting
+Route::get('/uploads/{path}', function ($path) {
+    $filePath = public_path('uploads/' . $path);
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+    return response()->file($filePath);
+})->where('path', '.*');
+
 // Portfolio and Case Study routes
 Route::get('/portfolio', function () {
     $categories = \App\Models\Category::orderBy('sort_order')->get();
