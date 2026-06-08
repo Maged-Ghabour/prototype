@@ -81,9 +81,7 @@ class SettingsPage extends Page
                             ->imagePreviewHeight('80')
                             ->disk('public')
                             ->directory('logos')
-                            ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/svg+xml', 'image/webp'])
-                            ->maxSize(2048)
-                            ->helperText('PNG, JPG, SVG, WEBP — الحد الأقصى 2MB'),
+                            ->helperText('PNG, JPG, SVG, WEBP'),
                     ])
                     ->columns(2),
 

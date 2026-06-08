@@ -28,9 +28,18 @@ Route::get('/run-migrations', function () {
     return 'Migrations and Seeders ran successfully. <a href="/">Go back</a>';
 });
 
-// Fallback route to serve uploaded files on Shared Hosting
+// Fallback route to serve uploaded files on Shared Hosting if they use /uploads/
 Route::get('/uploads/{path}', function ($path) {
     $filePath = public_path('uploads/' . $path);
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+    return response()->file($filePath);
+})->where('path', '.*');
+
+// Fallback route to serve uploaded files from /storage/ directly from storage_path
+Route::get('/storage/{path}', function ($path) {
+    $filePath = storage_path('app/public/' . $path);
     if (!file_exists($filePath)) {
         abort(404);
     }

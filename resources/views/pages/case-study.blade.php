@@ -2,7 +2,7 @@
     <!-- Hero Section -->
     <div class="relative bg-gray-900 overflow-hidden">
         @if($caseStudy->featured_image)
-            <img src="{{ asset('uploads/' . $caseStudy->featured_image) }}" alt="{{ $caseStudy->project_name }}" class="absolute inset-0 w-full h-full object-cover opacity-40">
+            <img src="{{ asset('storage/' . $caseStudy->featured_image) }}" alt="{{ $caseStudy->project_name }}" class="absolute inset-0 w-full h-full object-cover opacity-40">
         @endif
         <div class="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
             <div class="flex flex-col gap-4">
@@ -85,7 +85,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($caseStudy->gallery_images as $image)
                     <div class="overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                        <img src="{{ asset('uploads/' . $image) }}" alt="Gallery Image" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500">
+                        <img src="{{ asset('storage/' . $image) }}" alt="Gallery Image" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500">
                     </div>
                 @endforeach
             </div>
