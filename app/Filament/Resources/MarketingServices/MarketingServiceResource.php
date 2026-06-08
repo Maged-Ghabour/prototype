@@ -23,6 +23,7 @@ class MarketingServiceResource extends Resource
     protected static ?string $pluralModelLabel = 'الخدمات التسويقية';
 
     protected static ?string $navigationLabel = 'الخدمات التسويقية';
+    protected static ?string $navigationGroup = 'الإعدادات العامة';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 

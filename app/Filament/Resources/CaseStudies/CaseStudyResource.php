@@ -22,6 +22,8 @@ class CaseStudyResource extends Resource
     protected static ?string $modelLabel        = 'دراسة حالة';
     protected static ?string $pluralModelLabel  = 'دراسات الحالة';
     protected static ?int    $navigationSort    = 4;
+    protected static ?string $navigationGroup   = 'أعمال الوكالة';
+    protected static ?string $recordTitleAttribute = 'title';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
