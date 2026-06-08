@@ -33,6 +33,7 @@
     }
 </script>
 <style>
+html{scroll-behavior:smooth}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
@@ -1011,7 +1012,7 @@ body{font-family:'Tajawal',sans-serif;background:var(--wh);color:var(--dk);direc
 <header class="hdr">
   <div class="hdr-inner">
 
-    <a href="#" class="hdr-logo">
+    <a href="/" class="hdr-logo">
       <img src="https://fkretk.com/wp-content/uploads/2026/02/download-1-2.png"
            alt="فكرتك الرقمية" class="hdr-logo-img"
            onerror="this.style.display='none';document.getElementById('hdr-fb').style.display='flex'">
@@ -1055,13 +1056,15 @@ body{font-family:'Tajawal',sans-serif;background:var(--wh);color:var(--dk);direc
   <div class="mob-panel" id="mobPanel">
 
     <div class="mob-head">
-      <img src="https://fkretk.com/wp-content/uploads/2026/02/download-1-2.png"
-           alt="فكرتك" class="mob-logo-img"
-           onerror="this.style.display='none';document.getElementById('mob-fb').style.display='flex'">
-      <div id="mob-fb" class="mob-logo-fb">
-        <div class="mob-logo-fb-icon">ف</div>
-        <div class="mob-logo-fb-name">فكرتك الرقمية</div>
-      </div>
+      <a href="/" style="display:flex; align-items:center; text-decoration:none;">
+        <img src="https://fkretk.com/wp-content/uploads/2026/02/download-1-2.png"
+             alt="فكرتك" class="mob-logo-img"
+             onerror="this.style.display='none';document.getElementById('mob-fb').style.display='flex'">
+        <div id="mob-fb" class="mob-logo-fb">
+          <div class="mob-logo-fb-icon">ف</div>
+          <div class="mob-logo-fb-name">فكرتك الرقمية</div>
+        </div>
+      </a>
       <button class="mob-close" id="mobClose">
         <svg viewBox="0 0 24 24" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -1150,16 +1153,18 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
     <!-- COL 1 : BRAND -->
     <div class="ft-brand">
-      <img src="https://fkretk.com/wp-content/uploads/2026/02/download-1-2.png"
-           alt="فكرتك الرقمية" class="ft-logo-img"
-           onerror="this.style.display='none';document.getElementById('ft-fb').style.display='flex'">
-      <div id="ft-fb" class="ft-logo-fb">
-        <div class="ft-logo-icon">ف</div>
-        <div>
-          <div class="ft-logo-name">فكرتك الرقمية</div>
-          <div class="ft-logo-en">Fkretk Digital Agency</div>
+      <a href="/" style="display:block; text-decoration:none;">
+        <img src="https://fkretk.com/wp-content/uploads/2026/02/download-1-2.png"
+             alt="فكرتك الرقمية" class="ft-logo-img"
+             onerror="this.style.display='none';document.getElementById('ft-fb').style.display='flex'">
+        <div id="ft-fb" class="ft-logo-fb">
+          <div class="ft-logo-icon">ف</div>
+          <div>
+            <div class="ft-logo-name">فكرتك الرقمية</div>
+            <div class="ft-logo-en">Fkretk Digital Agency</div>
+          </div>
         </div>
-      </div>
+      </a>
 
       <p class="ft-tagline">
         وكالة تسويق رقمي سعودية — نحوّل فكرتك إلى نتائج حقيقية

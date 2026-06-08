@@ -18,6 +18,12 @@ class MarketingServiceResource extends Resource
 {
     protected static ?string $model = MarketingService::class;
 
+    protected static ?string $modelLabel = 'خدمة تسويقية';
+    
+    protected static ?string $pluralModelLabel = 'الخدمات التسويقية';
+
+    protected static ?string $navigationLabel = 'الخدمات التسويقية';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'title';

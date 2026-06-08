@@ -43,7 +43,7 @@ class AdminPanelProvider extends PanelProvider
 
             // ── الألوان ──────────────────────────────────────────────
             ->colors([
-                'primary' => Color::Violet,
+                'primary' => Color::Orange,
             ])
 
             // ── اسم التطبيق (ديناميكي) ───────────────────────────────
