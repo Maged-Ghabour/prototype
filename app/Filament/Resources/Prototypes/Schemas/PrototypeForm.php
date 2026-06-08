@@ -68,6 +68,7 @@ class PrototypeForm
                     \Filament\Forms\Components\FileUpload::make('thumbnail')
                         ->label('الصورة المصغرة (Thumbnail)')
                         ->image()
+                        ->disk('public')
                         ->directory('prototypes/thumbnails')
                         ->columnSpanFull(),
                 ])

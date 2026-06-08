@@ -80,6 +80,7 @@ class CaseStudyForm
                     FileUpload::make('featured_image')
                         ->label('الصورة البارزة')
                         ->image()
+                        ->disk('public')
                         ->directory('case-studies/featured')
                         ->columnSpanFull(),
 
@@ -87,6 +88,7 @@ class CaseStudyForm
                         ->label('معرض الصور')
                         ->image()
                         ->multiple()
+                        ->disk('public')
                         ->directory('case-studies/gallery')
                         ->reorderable()
                         ->columnSpanFull(),
