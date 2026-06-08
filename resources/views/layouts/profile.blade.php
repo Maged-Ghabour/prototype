@@ -1364,7 +1364,7 @@ body{font-family:'Tajawal',sans-serif;background:var(--wh);color:var(--dk);direc
             <div class="case-avatar-row">
               <div class="case-avatar" style="background:{{ $color['band'] }}18;border-color:{{ $color['band'] }}33;">
                 @if($case->featured_image)
-                  <img src="{{ asset('storage/' . $case->featured_image) }}" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
+                  <img src="{{ asset('uploads/' . $case->featured_image) }}" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
                 @else
                   <svg viewBox="0 0 24 24" fill="none" stroke="{{ $color['band'] }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
