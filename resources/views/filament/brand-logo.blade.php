@@ -6,7 +6,7 @@
     <img
         src="{{ $logoUrl }}"
         alt="{{ $appName }}"
-        style="height: 36px; width: auto; object-fit: contain;"
+        style="max-width: 120px; max-height: 32px; width: auto; height: auto; object-fit: contain;"
     >
     <span style="font-weight: 700; font-size: 1rem;">{{ $appName }}</span>
 </div>
