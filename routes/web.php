@@ -22,6 +22,12 @@ Route::get('/', function () {
     return redirect()->route('portfolio');
 });
 
+Route::get('/run-migrations', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'MarketingServiceSeeder', '--force' => true]);
+    return 'Migrations and Seeders ran successfully. <a href="/">Go back</a>';
+});
+
 // Portfolio and Case Study routes
 Route::get('/portfolio', function () {
     $categories = \App\Models\Category::orderBy('sort_order')->get();
