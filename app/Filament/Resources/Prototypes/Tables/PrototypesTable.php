@@ -26,6 +26,7 @@ class PrototypesTable
             ->columns([
                 \Filament\Tables\Columns\ImageColumn::make('thumbnail')
                     ->label('الصورة')
+                    ->disk('public')
                     ->square()
                     ->defaultImageUrl(asset('images/placeholder.png')),
 

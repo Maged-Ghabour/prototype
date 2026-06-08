@@ -18,6 +18,7 @@ class CaseStudiesTable
             ->columns([
                 ImageColumn::make('featured_image')
                     ->label('الصورة')
+                    ->disk('public')
                     ->square(),
 
                 TextColumn::make('project_name')
