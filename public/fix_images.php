@@ -45,8 +45,16 @@ echo "<h3>🔗 التأكد من الرابط الرمزي (Symlink):</h3>";
 $link = __DIR__ . '/storage';
 if (is_link($link)) {
     echo "<p class='ok'>✅ الرابط الرمزي (public/storage) موجود بالفعل.</p>";
-} elseif (file_exists($link)) {
-    echo "<p class='err'>⚠️ يوجد مجلد حقيقي باسم storage داخل مجلد public بدلاً من الرابط الرمزي! يجب حذفه وإنشاء الرابط.</p>";
+} elseif (file_exists($link) && is_dir($link)) {
+    $backupName = __DIR__ . '/storage_backup_' . time();
+    rename($link, $backupName);
+    echo "<p class='info'>🔄 تم العثور على مجلد حقيقي باسم storage بدلاً من رابط. تم تغيير اسمه إلى storage_backup لحفظ ملفاتك.</p>";
+    
+    if (symlink($targetDir, $link)) {
+         echo "<p class='ok'>✅ تم إنشاء الرابط الرمزي (Symlink) بنجاح الآن.</p>";
+    } else {
+         echo "<p class='err'>❌ تعذر إنشاء الرابط الرمزي، جرب استخدام php artisan storage:link</p>";
+    }
 } else {
     if (symlink($targetDir, $link)) {
          echo "<p class='ok'>✅ تم إنشاء الرابط الرمزي بنجاح الآن.</p>";
