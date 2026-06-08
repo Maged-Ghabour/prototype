@@ -52,8 +52,12 @@ class PrototypeResource extends Resource
      */
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationGroup = 'أعمال الوكالة';
     protected static ?string $recordTitleAttribute = 'title';
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'أعمال الوكالة';
+    }
 
     /**
      * Define the form schema used for create/edit pages.
