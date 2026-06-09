@@ -91,7 +91,8 @@ class AdminPanelProvider extends PanelProvider
             $panelBuilder->brandLogo(fn () => view('filament.brand-logo', [
                 'logoUrl' => \Storage::disk('public')->url($logoPath),
                 'appName' => $appName,
-            ]));
+            ]))
+            ->brandLogoHeight('4rem');
         }
 
         return $panelBuilder;

@@ -49,8 +49,8 @@ class Category extends Model
     }
 
     /** النماذج التابعة لهذا التصنيف */
-    public function prototypes(): HasMany
+    public function prototypes(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(Prototype::class);
+        return $this->belongsToMany(Prototype::class);
     }
 }
