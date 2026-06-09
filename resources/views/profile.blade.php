@@ -191,6 +191,8 @@
               <div class="case-avatar" style="background:{{ $color['band'] }}18;border-color:{{ $color['band'] }}33;">
                 @if($prototype->thumbnail)
                   <img src="{{ asset('storage/' . $prototype->thumbnail) }}" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
+                @elseif($prototype->icon)
+                  @svg($prototype->icon, '', ['style' => 'width: 24px; height: 24px; color: ' . $color['band']])
                 @else
                   <svg viewBox="0 0 24 24" fill="none" stroke="{{ $color['band'] }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>

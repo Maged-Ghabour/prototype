@@ -36,6 +36,7 @@ class Prototype extends Model
         'js_code',
         'is_public',
         'is_visible_on_home',
+        'icon',
         'thumbnail',
         'status',
     ];

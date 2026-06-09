@@ -77,6 +77,31 @@ class PrototypeForm
                         ->image()
                         ->disk('public')
                         ->directory('prototypes/thumbnails')
+                        ->maxSize(2048)
+                        ->helperText('صورة تظهر في كروت العرض (اختياري)')
+                        ->columnSpanFull(),
+
+                    \Filament\Forms\Components\Select::make('icon')
+                        ->label('أيقونة النموذج (اختياري)')
+                        ->helperText('اختر أيقونة في حال عدم رفع صورة مصغرة')
+                        ->options([
+                            'heroicon-o-home' => 'الرئيسية (Home)',
+                            'heroicon-o-shopping-cart' => 'متجر إلكتروني (Cart)',
+                            'heroicon-o-academic-cap' => 'تعليم (Academic)',
+                            'heroicon-o-briefcase' => 'أعمال (Briefcase)',
+                            'heroicon-o-building-office' => 'عقارات (Building)',
+                            'heroicon-o-camera' => 'تصوير (Camera)',
+                            'heroicon-o-code-bracket' => 'برمجة (Code)',
+                            'heroicon-o-computer-desktop' => 'شاشة (Desktop)',
+                            'heroicon-o-device-phone-mobile' => 'جوال (Mobile)',
+                            'heroicon-o-heart' => 'صحة (Health)',
+                            'heroicon-o-truck' => 'توصيل (Truck)',
+                            'heroicon-o-users' => 'مجتمع (Users)',
+                            'heroicon-o-sparkles' => 'تصميم / إبداع (Sparkles)',
+                            'heroicon-o-bolt' => 'تكنولوجيا (Bolt)',
+                            'heroicon-o-rocket-launch' => 'انطلاق / شركة ناشئة (Rocket)',
+                        ])
+                        ->searchable()
                         ->columnSpanFull(),
                 ])
                 ->columns(2),
