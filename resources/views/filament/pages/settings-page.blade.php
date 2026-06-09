@@ -12,7 +12,8 @@
                     <img
                         src="{{ Storage::disk('public')->url($logoPath) }}"
                         alt="لوجو التطبيق"
-                        class="h-16 max-w-[150px] object-contain"
+                        class="object-contain"
+                        style="max-width: 200px; max-height: 80px;"
                     >
             </div>
         </div>

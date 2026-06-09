@@ -18,6 +18,8 @@ class CaseStudyResource extends Resource
 {
     protected static ?string $model = CaseStudy::class;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $navigationLabel   = 'دراسات الحالة';
     protected static ?string $modelLabel        = 'دراسة حالة';
     protected static ?string $pluralModelLabel  = 'دراسات الحالة';

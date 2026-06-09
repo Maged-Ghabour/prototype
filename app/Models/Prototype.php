@@ -35,13 +35,14 @@ class Prototype extends Model
         'css_code',
         'js_code',
         'is_public',
-        'category_id',
+        'is_visible_on_home',
         'thumbnail',
         'status',
     ];
 
     protected $casts = [
         'is_public' => 'boolean',
+        'is_visible_on_home' => 'boolean',
         'status' => \App\Enums\PrototypeStatus::class,
     ];
 
@@ -85,10 +86,10 @@ class Prototype extends Model
 
     // ── العلاقات ──────────────────────────────────────────────────
 
-    /** التصنيف الذي ينتمي إليه النموذج (اختياري) */
-    public function category(): BelongsTo
+    /** التصنيفات التي ينتمي إليها النموذج (many-to-many) */
+    public function categories(): BelongsToMany
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     /** الوسوم المرتبطة بالنموذج (many-to-many) */

@@ -59,6 +59,13 @@ class PrototypeForm
                         ->onColor('success')
                         ->offColor('danger'),
 
+                    Toggle::make('is_visible_on_home')
+                        ->label('عرض في الرئيسية')
+                        ->helperText('عند التفعيل، سيتم عرض هذا النموذج في الصفحة الرئيسية.')
+                        ->default(true)
+                        ->onColor('success')
+                        ->offColor('danger'),
+
                     \Filament\Forms\Components\Select::make('status')
                         ->label('حالة النموذج')
                         ->options(\App\Enums\PrototypeStatus::class)
@@ -79,13 +86,13 @@ class PrototypeForm
                 ->description('صنّف نموذجك وأضف وسوماً لتسهيل البحث والتصفية.')
                 ->icon('heroicon-o-tag')
                 ->schema([
-                    Select::make('category_id')
-                        ->label('التصنيف')
-                        ->relationship('category', 'name')
+                    Select::make('categories')
+                        ->label('التصنيفات')
+                        ->relationship('categories', 'name')
+                        ->multiple()
                         ->searchable()
                         ->preload()
-                        ->placeholder('اختر تصنيفاً...')
-                        ->nullable()
+                        ->placeholder('اختر تصنيفات...')
                         ->createOptionForm([
                             TextInput::make('name')
                                 ->label('اسم التصنيف')

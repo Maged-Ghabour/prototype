@@ -36,15 +36,15 @@ class PrototypesTable
                     ->searchable()
                     ->sortable()
                     ->weight('bold')
-                    ->description(fn ($record) => $record->category?->name ?? '—'),
+                    ->description(fn ($record) => $record->categories->pluck('name')->implode(', ') ?: '—'),
 
-                // التصنيف — badge ملوّن
-                TextColumn::make('category.name')
-                    ->label('التصنيف')
+                // التصنيفات — badge ملوّن
+                TextColumn::make('categories.name')
+                    ->label('التصنيفات')
                     ->badge()
-                    ->color(fn ($record) => $record?->category?->color ? 'primary' : 'gray')
-                    ->placeholder('—')
-                    ->sortable(),
+                    ->color('primary')
+                    ->separator(',')
+                    ->placeholder('—'),
 
                 // الوسوم — مجموعة badges
                 TextColumn::make('tags.name')
@@ -70,6 +70,10 @@ class PrototypesTable
                     ->falseColor('danger')
                     ->sortable(),
 
+                \Filament\Tables\Columns\ToggleColumn::make('is_visible_on_home')
+                    ->label('في الرئيسية')
+                    ->sortable(),
+
                 // تاريخ الإنشاء
                 TextColumn::make('created_at')
                     ->label('تاريخ الإنشاء')
@@ -81,9 +85,9 @@ class PrototypesTable
 
             // ── فلاتر البحث والتصفية ─────────────────────────────────
             ->filters([
-                SelectFilter::make('category_id')
+                SelectFilter::make('categories')
                     ->label('التصنيف')
-                    ->relationship('category', 'name')
+                    ->relationship('categories', 'name')
                     ->searchable()
                     ->preload()
                     ->placeholder('جميع التصنيفات'),
@@ -100,6 +104,14 @@ class PrototypesTable
                     ->options([
                         '1' => 'عام',
                         '0' => 'خاص',
+                    ])
+                    ->placeholder('الكل'),
+
+                SelectFilter::make('is_visible_on_home')
+                    ->label('في الرئيسية')
+                    ->options([
+                        '1' => 'نعم',
+                        '0' => 'لا',
                     ])
                     ->placeholder('الكل'),
 

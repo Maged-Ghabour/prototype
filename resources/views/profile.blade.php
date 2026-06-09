@@ -150,19 +150,19 @@
 </div>
 
 <!-- ══════════════════════════════════
-     CASE STUDIES
+     PROTOTYPES
 ══════════════════════════════════ -->
 <section class="cases-section" id="cases">
   <div style="max-width:1200px;margin:0 auto;">
 
     <div class="sec-head reveal">
-      <span class="sec-eyebrow">نتائج موثّقة بالأرقام</span>
-      <h2 class="sec-h2">دراسات <span>الحالة</span></h2>
-      <p class="sec-body">شركاؤنا يثقون بنا لأن نتائجنا تتحدث عن نفسها — اضغط لرؤية الكيس ستدي كاملاً</p>
+      <span class="sec-eyebrow">أعمالنا وإبداعاتنا</span>
+      <h2 class="sec-h2">النماذج <span>التجريبية</span></h2>
+      <p class="sec-body">استعرض أحدث النماذج التجريبية التي قمنا بتطويرها</p>
     </div>
 
     <div class="cases-grid" id="casesGrid">
-      @foreach($caseStudies as $i => $case)
+      @foreach($prototypes as $i => $prototype)
         @php
            $delay = $i * 0.07;
            $colors = [
@@ -173,12 +173,12 @@
            ];
            $color = $colors[$i % count($colors)];
         @endphp
-        <a class="case-card reveal" href="{{ route('case-study.show', $case->slug) }}" style="transition-delay:{{ $delay }}s">
+        <a class="case-card reveal" href="{{ route('prototype.preview', $prototype->slug) }}" target="_blank" style="transition-delay:{{ $delay }}s">
           <div style="height:4px;background:{{ $color['band'] }};"></div>
           <div class="case-top">
             <span class="niche-pill {{ $color['nc'] }}">
               <svg width="9" height="9" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
-              {{ $case->industry ?? 'عام' }}
+              {{ $prototype->categories->first()?->name ?? 'عام' }}
             </span>
             <div class="case-arrow-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -189,8 +189,8 @@
           <div class="case-body">
             <div class="case-avatar-row">
               <div class="case-avatar" style="background:{{ $color['band'] }}18;border-color:{{ $color['band'] }}33;">
-                @if($case->featured_image)
-                  <img src="{{ asset('public/uploads/' . $case->featured_image) }}" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
+                @if($prototype->thumbnail)
+                  <img src="{{ asset('storage/' . $prototype->thumbnail) }}" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
                 @else
                   <svg viewBox="0 0 24 24" fill="none" stroke="{{ $color['band'] }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
@@ -198,16 +198,16 @@
                 @endif
               </div>
               <div>
-                <div class="case-client">{{ Str::limit($case->client_name, 20) }}</div>
-                <div class="case-sub">{{ Str::limit($case->project_name, 25) }}</div>
+                <div class="case-client">{{ Str::limit($prototype->title, 25) }}</div>
+                <div class="case-sub">نموذج تجريبي</div>
               </div>
             </div>
             <div class="case-divider"></div>
             <div style="font-size:13px; color:var(--muted); line-height:1.6; flex:1; margin-bottom:12px;">
-              {{ Str::limit(strip_tags($case->short_description), 80) }}
+              {{ $prototype->title }} - تم تطويره باستخدام أحدث التقنيات
             </div>
             <div class="stags">
-               <span class="stag">قراءة المزيد</span>
+               <span class="stag">معاينة النموذج</span>
             </div>
           </div>
         </a>

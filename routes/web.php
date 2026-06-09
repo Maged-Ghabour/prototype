@@ -49,9 +49,9 @@ Route::get('/storage/{path}', function ($path) {
 // Portfolio and Case Study routes
 Route::get('/portfolio', function () {
     $categories = \App\Models\Category::orderBy('sort_order')->get();
-    $caseStudies = \App\Models\CaseStudy::where('is_published', true)->latest()->take(6)->get();
+    $prototypes = \App\Models\Prototype::where('is_public', true)->where('is_visible_on_home', true)->latest()->take(6)->get();
     $marketingServices = \App\Models\MarketingService::where('is_active', true)->orderBy('sort_order')->get();
-    return view('profile', compact('categories', 'caseStudies', 'marketingServices'));
+    return view('profile', compact('categories', 'prototypes', 'marketingServices'));
 })->name('portfolio');
 Route::get('/case-study/{slug}', [\App\Http\Controllers\CaseStudyController::class, 'show'])->name('case-study.show');
 
