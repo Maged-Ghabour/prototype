@@ -49,7 +49,7 @@ Route::get('/storage/{path}', function ($path) {
 // Portfolio and Case Study routes
 Route::get('/portfolio', function () {
     $categories = \App\Models\Category::orderBy('sort_order')->get();
-    $prototypes = \App\Models\Prototype::where('is_public', true)->where('is_visible_on_home', true)->latest()->get();
+    $prototypes = \App\Models\Prototype::where('is_public', true)->where('is_visible_on_home', true)->orderBy('sort_order', 'asc')->latest()->get();
     $marketingServices = \App\Models\MarketingService::where('is_active', true)->orderBy('sort_order')->get();
     return view('profile', compact('categories', 'prototypes', 'marketingServices'));
 })->name('portfolio');

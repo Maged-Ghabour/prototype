@@ -9,7 +9,11 @@ class CategoryController extends Controller
 {
     public function show(Category $category)
     {
-        $prototypes = $category->prototypes()->where('is_public', true)->paginate(12);
+        $prototypes = $category->prototypes()
+            ->where('is_public', true)
+            ->orderBy('sort_order', 'asc')
+            ->latest()
+            ->paginate(12);
 
         return view('category.show', compact('category', 'prototypes'));
     }

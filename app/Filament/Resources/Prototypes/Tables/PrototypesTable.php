@@ -81,6 +81,10 @@ class PrototypesTable
                     ->sortable()
                     ->since()
                     ->tooltip(fn ($record) => $record->created_at->format('Y-m-d H:i:s')),
+                    
+                \Filament\Tables\Columns\TextInputColumn::make('sort_order')
+                    ->label('الترتيب')
+                    ->sortable(),
             ])
 
             // ── فلاتر البحث والتصفية ─────────────────────────────────
@@ -165,7 +169,8 @@ class PrototypesTable
                     DeleteBulkAction::make()->label('حذف المحدد'),
                 ]),
             ])
-            ->defaultSort('created_at', 'desc')
+            ->reorderable('sort_order')
+            ->defaultSort('sort_order', 'asc')
             ->emptyStateHeading('لا توجد نماذج بعد')
             ->emptyStateDescription('ابدأ بإنشاء أول نموذج تجريبي مولّد بالذكاء الاصطناعي.')
             ->emptyStateIcon('heroicon-o-code-bracket');

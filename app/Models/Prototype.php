@@ -39,6 +39,7 @@ class Prototype extends Model
         'icon',
         'thumbnail',
         'status',
+        'sort_order',
     ];
 
     protected $casts = [
