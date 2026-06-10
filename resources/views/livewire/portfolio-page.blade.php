@@ -3,7 +3,7 @@
     <div class="bg-primary-900 py-16 sm:py-24">
         <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
             <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl" style="font-family: 'Cairo', sans-serif;">معرض الأعمال</h1>
-            <p class="mt-6 text-lg leading-8 text-primary-200">استكشف دراسات الحالة والنماذج التجريبية التي قمنا بتطويرها لعملائنا.</p>
+            <p class="mt-6 text-lg leading-8 text-primary-200">استكشف دراسات الحالة التي قمنا بتطويرها لعملائنا.</p>
         </div>
     </div>
 

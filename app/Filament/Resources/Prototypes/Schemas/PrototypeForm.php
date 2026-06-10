@@ -40,7 +40,7 @@ class PrototypeForm
                                 $set('slug', Str::slug($state));
                             }
                         })
-                        ->placeholder('نموذج تجريبي رائع'),
+                        ->placeholder('دراسة حالة رائعة'),
 
                     TextInput::make('slug')
                         ->label('المعرّف (Slug)')

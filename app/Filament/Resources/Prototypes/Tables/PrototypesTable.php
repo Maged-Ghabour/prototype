@@ -82,7 +82,7 @@ class PrototypesTable
                     ->since()
                     ->tooltip(fn ($record) => $record->created_at->format('Y-m-d H:i:s')),
                     
-                \Filament\Tables\Columns\TextInputColumn::make('sort_order')
+                TextColumn::make('sort_order')
                     ->label('الترتيب')
                     ->sortable(),
             ])
@@ -171,8 +171,8 @@ class PrototypesTable
             ])
             ->reorderable('sort_order')
             ->defaultSort('sort_order', 'asc')
-            ->emptyStateHeading('لا توجد نماذج بعد')
-            ->emptyStateDescription('ابدأ بإنشاء أول نموذج تجريبي مولّد بالذكاء الاصطناعي.')
+            ->emptyStateHeading('لا توجد دراسات حالة بعد')
+            ->emptyStateDescription('ابدأ بإنشاء أول دراسة حالة.')
             ->emptyStateIcon('heroicon-o-code-bracket');
     }
 }

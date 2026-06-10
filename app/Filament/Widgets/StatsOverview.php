@@ -25,7 +25,7 @@ class StatsOverview extends BaseWidget
 
         return [
             Stat::make('إجمالي النماذج', $totalPrototypes)
-                ->description('إجمالي النماذج التجريبية المسجلة')
+                ->description('إجمالي دراسات الحالة المسجلة')
                 ->descriptionIcon('heroicon-m-code-bracket-square')
                 ->color('primary')
                 ->chart([7, 2, 10, 3, 15, 4, 17]),

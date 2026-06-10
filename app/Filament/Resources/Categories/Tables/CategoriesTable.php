@@ -66,6 +66,7 @@ class CategoriesTable
             ])
             ->emptyStateHeading('لا توجد تصنيفات بعد')
             ->emptyStateDescription('أنشئ تصنيفاً لتنظيم نماذجك التجريبية.')
-            ->emptyStateIcon('heroicon-o-folder');
+            ->emptyStateIcon('heroicon-o-folder')
+            ->reorderable('sort_order');
     }
 }

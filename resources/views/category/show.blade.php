@@ -4,7 +4,7 @@
 <div class="bg-primary-900 py-16 sm:py-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl" style="font-family: 'Cairo', sans-serif;">{{ $category->name }}</h1>
-        <p class="mt-6 text-lg leading-8 text-primary-200">{{ $category->description ?? 'تصفح النماذج التجريبية لهذا التصنيف.' }}</p>
+        <p class="mt-6 text-lg leading-8 text-primary-200">{{ $category->description ?? 'تصفح دراسات الحالة لهذا التصنيف.' }}</p>
     </div>
 </div>
 
@@ -48,7 +48,7 @@
                       </div>
                       <div>
                         <div class="case-client">{{ Str::limit($prototype->title, 25) }}</div>
-                        <div class="case-sub">نموذج تجريبي</div>
+                        <div class="case-sub">دراسة حالة</div>
                       </div>
                     </div>
                     <div class="case-divider"></div>
@@ -56,7 +56,7 @@
                       {{ $prototype->title }} - تم تطويره باستخدام أحدث التقنيات
                     </div>
                     <div class="stags">
-                       <span class="stag">معاينة النموذج</span>
+                       <span class="stag">معاينة دراسة الحالة</span>
                     </div>
                   </div>
                 </a>
@@ -71,8 +71,8 @@
             <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
             </svg>
-            <h3 class="mt-2 text-sm font-semibold text-gray-900">لا توجد نماذج</h3>
-            <p class="mt-1 text-sm text-gray-500">لا توجد نماذج تجريبية منشورة في هذا التصنيف حالياً.</p>
+            <h3 class="mt-2 text-sm font-semibold text-gray-900">لا توجد دراسات حالة</h3>
+            <p class="mt-1 text-sm text-gray-500">لا توجد دراسات حالة منشورة في هذا التصنيف حالياً.</p>
         </div>
     @endif
 </div>

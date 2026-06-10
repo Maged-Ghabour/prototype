@@ -35,17 +35,17 @@ class PrototypeResource extends Resource
     /**
      * التسمية في شريط التنقل الجانبي
      */
-    protected static ?string $navigationLabel = 'النماذج التجريبية';
+    protected static ?string $navigationLabel = 'دراسات الحالة';
 
     /**
      * التسمية المفردة للعنصر
      */
-    protected static ?string $modelLabel = 'نموذج تجريبي';
+    protected static ?string $modelLabel = 'دراسة حالة';
 
     /**
      * التسمية الجمع للعناصر
      */
-    protected static ?string $pluralModelLabel = 'النماذج التجريبية';
+    protected static ?string $pluralModelLabel = 'دراسات الحالة';
 
     /**
      * ترتيب الظهور في القائمة

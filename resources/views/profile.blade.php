@@ -157,8 +157,8 @@
 
     <div class="sec-head reveal">
       <span class="sec-eyebrow">أعمالنا وإبداعاتنا</span>
-      <h2 class="sec-h2">النماذج <span>التجريبية</span></h2>
-      <p class="sec-body">استعرض أحدث النماذج التجريبية التي قمنا بتطويرها</p>
+      <h2 class="sec-h2">دراسات <span>الحالة</span></h2>
+      <p class="sec-body">استعرض أحدث دراسات الحالة التي قمنا بتطويرها</p>
     </div>
 
     <div class="cases-grid" id="casesGrid">
@@ -201,7 +201,7 @@
               </div>
               <div>
                 <div class="case-client">{{ Str::limit($prototype->title, 25) }}</div>
-                <div class="case-sub">نموذج تجريبي</div>
+                <div class="case-sub">دراسة حالة</div>
               </div>
             </div>
             <div class="case-divider"></div>
@@ -209,7 +209,7 @@
               {{ $prototype->title }} - تم تطويره باستخدام أحدث التقنيات
             </div>
             <div class="stags">
-               <span class="stag">معاينة النموذج</span>
+               <span class="stag">معاينة دراسة الحالة</span>
             </div>
           </div>
         </a>
