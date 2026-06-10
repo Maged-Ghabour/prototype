@@ -26,7 +26,7 @@ class MarketingServicesTable
                     ->searchable()
                     ->sortable(),
                     
-                TextColumn::make('sort_order')
+                \Filament\Tables\Columns\TextInputColumn::make('sort_order')
                     ->label('الترتيب')
                     ->sortable(),
                     

@@ -82,7 +82,7 @@ class PrototypesTable
                     ->since()
                     ->tooltip(fn ($record) => $record->created_at->format('Y-m-d H:i:s')),
                     
-                TextColumn::make('sort_order')
+                \Filament\Tables\Columns\TextInputColumn::make('sort_order')
                     ->label('الترتيب')
                     ->sortable(),
             ])
