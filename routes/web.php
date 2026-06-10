@@ -71,3 +71,7 @@ Route::get('/category/{category:slug}', [\App\Http\Controllers\CategoryControlle
 Route::get('/p/{slug}', [PrototypeController::class, 'show'])
     ->name('prototype.preview')
     ->where('slug', '[a-z0-9\-]+'); // Only allow valid slug characters
+
+Route::get('/p/{slug}/raw', [PrototypeController::class, 'raw'])
+    ->name('prototype.raw')
+    ->where('slug', '[a-z0-9\-]+');

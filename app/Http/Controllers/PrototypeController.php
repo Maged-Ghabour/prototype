@@ -35,7 +35,22 @@ class PrototypeController extends Controller
             abort(404, 'Prototype not found or is not publicly accessible.');
         }
 
-        // Render the full-page preview via Blade
+        // Render the full-page preview via Blade (framed)
         return view('prototype.preview', compact('prototype'));
+    }
+
+    /**
+     * Show the raw prototype content without any layout.
+     * Used as the src for the iframe in the preview page.
+     */
+    public function raw(string $slug)
+    {
+        $prototype = Prototype::where('slug', $slug)->first();
+
+        if (!$prototype || !$prototype->is_public) {
+            abort(404, 'Prototype not found or is not publicly accessible.');
+        }
+
+        return view('prototype.raw', compact('prototype'));
     }
 }
