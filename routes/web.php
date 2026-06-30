@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
  * Root redirect: send visitors directly to the admin panel.
  * This is an admin-only tool so there is no public homepage.
  */
-Route::get('/', function () {
+Route::any('/', function () {
     return redirect()->route('portfolio');
 });
 
