@@ -14,5 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->renderable(function (\Livewire\Exceptions\PayloadTooLargeException $e, $request) {
+            return redirect()->back()->with('error', 'حجم البيانات أو الملف المرفوع كبير جداً. يرجى تقليل الحجم والمحاولة مرة أخرى.');
+        });
     })->create();
