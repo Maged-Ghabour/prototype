@@ -6,6 +6,7 @@ use App\Models\AppSetting;
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Section;
@@ -38,16 +39,33 @@ class SettingsPage extends Page
     // ── حالة الفورم ────────────────────────────────────────────────
     public array $data = [];
 
-    /**
-     * تُحمَّل القيم الحالية عند فتح الصفحة.
-     */
     public function mount(): void
     {
         $user = Auth::user();
 
+        $defaultGtmHeader = <<<HTML
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M2ML2DWB');</script>
+<!-- End Google Tag Manager -->
+<meta name="facebook-domain-verification" content="2ygo84e4pywlboz7gszbpqkvk9noc7" />
+HTML;
+
+        $defaultGtmBody = <<<HTML
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TX2N9P7J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+HTML;
+
         $this->form->fill([
             'app_name' => AppSetting::get('app_name', config('app.name')),
             'logo'     => AppSetting::get('logo_path'),
+            'gtm_header' => AppSetting::get('gtm_header', $defaultGtmHeader),
+            'gtm_body'   => AppSetting::get('gtm_body', $defaultGtmBody),
             'name'     => $user->name,
             'email'    => $user->email,
             'password' => null,
@@ -84,6 +102,23 @@ class SettingsPage extends Page
                             ->helperText('PNG, JPG, SVG, WEBP'),
                     ])
                     ->columns(2),
+
+                // ── إعدادات التتبع (GTM) ──────────────────────────────────
+                Section::make('أكواد التتبع و Google Tag Manager')
+                    ->description('أضف أكواد GTM أو Meta tags ليتم إدراجها في جميع صفحات الموقع.')
+                    ->icon('heroicon-o-code-bracket')
+                    ->schema([
+                        Textarea::make('gtm_header')
+                            ->label('كود Header')
+                            ->rows(6)
+                            ->placeholder('أدخل الكود الذي سيوضع في الـ <head>...'),
+
+                        Textarea::make('gtm_body')
+                            ->label('كود Body')
+                            ->rows(6)
+                            ->placeholder('أدخل الكود الذي سيوضع بعد فتح <body>...'),
+                    ])
+                    ->columns(1),
 
                 // ── بيانات الحساب ──────────────────────────────────────
                 Section::make('بيانات حساب المدير')
@@ -139,6 +174,8 @@ class SettingsPage extends Page
 
         // ── حفظ إعدادات التطبيق ─────────────────────────────────────
         AppSetting::set('app_name', $data['app_name']);
+        AppSetting::set('gtm_header', $data['gtm_header'] ?? '');
+        AppSetting::set('gtm_body', $data['gtm_body'] ?? '');
 
         if (!empty($data['logo'])) {
             AppSetting::set('logo_path', $data['logo']);

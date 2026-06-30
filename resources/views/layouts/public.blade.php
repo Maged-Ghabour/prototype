@@ -1003,8 +1003,10 @@ body{font-family:'Tajawal',sans-serif;background:var(--wh);color:var(--dk);direc
   .mob-nav-item:active{background:var(--bl-pale);color:var(--bl);}
 }
 </style>
+{!! \App\Models\AppSetting::get('gtm_header') !!}
 </head>
 <body>
+{!! \App\Models\AppSetting::get('gtm_body') !!}
 
 <!-- ══════════════════════════════════
      HEADER
