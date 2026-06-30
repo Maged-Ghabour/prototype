@@ -158,6 +158,14 @@ class PrototypeForm
                 ->description('هيكل HTML للنموذج التجريبي.')
                 ->icon('heroicon-o-code-bracket')
                 ->schema([
+                    \Filament\Forms\Components\FileUpload::make('html_file_upload')
+                        ->label('رفع ملف HTML (اختياري - بديل للنسخ واللصق)')
+                        ->helperText('إذا كان الكود كبيراً ويتم حظره من قبل حماية السيرفر (ModSecurity)، قم بحفظ الكود في ملف .html وارفعه هنا وسنقوم نحن بسحب الكود منه تلقائياً.')
+                        ->acceptedFileTypes(['text/html', 'text/plain'])
+                        ->disk('local')
+                        ->directory('temp-html')
+                        ->columnSpanFull(),
+
                     Textarea::make('html_code')
                         ->label('')
                         ->rows(18)
