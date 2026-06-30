@@ -19,8 +19,6 @@ return Application::configure(basePath: dirname(__DIR__))
         });
         
         $exceptions->renderable(function (\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException $e, $request) {
-            if ($request->is('/')) {
-                return redirect()->route('portfolio');
-            }
+            return redirect()->route('portfolio');
         });
     })->create();
