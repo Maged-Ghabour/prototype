@@ -15,8 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->renderable(function (\Livewire\Exceptions\PayloadTooLargeException $e, $request) {
-            $response = new \Illuminate\Http\RedirectResponse(url()->previous());
-            return $response->with('error', 'حجم البيانات أو الملف المرفوع كبير جداً. يرجى تقليل الحجم والمحاولة مرة أخرى.');
+            return response()->view('errors.413', [], 413);
         });
         
         $exceptions->renderable(function (\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException $e, $request) {
