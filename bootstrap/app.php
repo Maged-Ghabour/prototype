@@ -17,4 +17,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->renderable(function (\Livewire\Exceptions\PayloadTooLargeException $e, $request) {
             return redirect()->back()->with('error', 'حجم البيانات أو الملف المرفوع كبير جداً. يرجى تقليل الحجم والمحاولة مرة أخرى.');
         });
+        
+        $exceptions->renderable(function (\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException $e, $request) {
+            if ($request->is('/')) {
+                return redirect()->route('portfolio');
+            }
+        });
     })->create();
