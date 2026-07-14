@@ -1,9 +1,9 @@
 @extends('layouts.public')
 
 @section('content')
-    <div class="prototype-preview-wrapper" style="min-height: 80vh; padding: 40px 20px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column;">
+    <div class="prototype-preview-wrapper" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem;">
         @if($prototype->html_code || $prototype->css_code || $prototype->js_code || $prototype->html_file_upload)
-        <div style="background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--ss); flex-grow: 1; display: flex; flex-direction: column;">
+        <div style="background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--ss); flex-grow: 1; display: flex; flex-direction: column; min-height: 80vh;">
             <iframe 
                 src="{{ route('prototype.raw', $prototype->slug) }}" 
                 frameborder="0"
@@ -12,8 +12,6 @@
             ></iframe>
         </div>
         @endif
-        </div>
-
         <!-- Videos Section -->
         @if($prototype->youtube_videos && is_array($prototype->youtube_videos) && count($prototype->youtube_videos) > 0)
         @php
@@ -26,7 +24,7 @@
         @endphp
         <div class="mt-12">
             <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" style="font-family: inherit;">فيديوهات النموذج</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 2rem;">
                 @foreach($prototype->youtube_videos as $index => $video)
                     @if(isset($video['url']))
                         @php $vidId = getYoutubeId($video['url']); @endphp
