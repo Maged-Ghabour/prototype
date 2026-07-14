@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="prototype-preview-wrapper" style="min-height: 80vh; padding: 40px 20px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column;">
+        @if($prototype->html_code || $prototype->css_code || $prototype->js_code || $prototype->html_file_upload)
         <div style="background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--ss); flex-grow: 1; display: flex; flex-direction: column;">
             <iframe 
                 src="{{ route('prototype.raw', $prototype->slug) }}" 
@@ -10,6 +11,7 @@
                 onload="this.style.height = this.contentWindow.document.documentElement.scrollHeight + 'px';"
             ></iframe>
         </div>
+        @endif
         </div>
 
         <!-- Videos Section -->
