@@ -24,12 +24,12 @@
         @endphp
         <div class="mt-12">
             <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" style="font-family: inherit;">فيديوهات النموذج</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 2rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
                 @foreach($prototype->youtube_videos as $index => $video)
                     @if(isset($video['url']))
                         @php $vidId = getYoutubeId($video['url']); @endphp
                         @if($vidId)
-                        <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl group bg-black aspect-video" style="position: relative; width: 100%; border-radius: 1rem; overflow: hidden; background: black; aspect-ratio: 16/9; border: 1px solid #e5e7eb; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl group bg-black aspect-video" style="position: relative; width: 100%; flex: 1 1 340px; max-width: 380px; border-radius: 1rem; overflow: hidden; background: black; aspect-ratio: 16/9; border: 1px solid #e5e7eb; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
                             <!-- YouTube Player Container -->
                             <div id="youtube-player-{{ $index }}" class="w-full h-full pointer-events-none" style="width: 100%; height: 100%; pointer-events: none;"></div>
                             
