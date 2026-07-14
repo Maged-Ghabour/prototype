@@ -17,7 +17,7 @@
         @php
             if (!function_exists('getYoutubeId')) {
                 function getYoutubeId($url) {
-                    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/\s]{11})%i', $url, $match);
+                    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?|shorts)/|.*[?&]v=)|youtu\.be/)([^"&?/\s]{11})%i', $url, $match);
                     return isset($match[1]) ? $match[1] : null;
                 }
             }
