@@ -121,17 +121,19 @@
                 var shield = document.getElementById('playing-shield-' + index);
                 
                 if (event.data == YT.PlayerState.PLAYING) {
-                    // Delay hiding the overlay by 2 seconds to wait for YouTube UI to natively fade out
+                    // Start fading out instantly so it doesn't feel slow
+                    overlay.style.transition = 'opacity 1s ease';
+                    overlay.style.opacity = '0';
                     setTimeout(function() { 
                         if(players[index].getPlayerState() === YT.PlayerState.PLAYING) {
-                            overlay.style.opacity = '0';
-                            setTimeout(function() { overlay.style.display = 'none'; }, 500); 
+                            overlay.style.display = 'none'; 
                         }
-                    }, 2000);
+                    }, 1000);
                     shield.style.display = 'block';
                     shield.style.zIndex = '20'; // bring above iframe
                 } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.UNSTARTED) {
                     // Show overlay again instantly to completely hide YouTube UI
+                    overlay.style.transition = 'none';
                     overlay.style.display = 'block';
                     setTimeout(function() { overlay.style.opacity = '1'; }, 10);
                     shield.style.display = 'none';
