@@ -34,7 +34,7 @@
                             <div id="youtube-player-{{ $index }}" class="w-full h-full pointer-events-none" style="width: 100%; height: 100%; pointer-events: none;"></div>
                             
                             <!-- Solid Overlay Shield with Thumbnail (Hides YouTube UI entirely) -->
-                            <div id="video-overlay-{{ $index }}" class="absolute inset-0 z-10 cursor-pointer transition-opacity duration-500" onclick="togglePlay({{ $index }})" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; cursor: pointer; background-color: black; transition: opacity 0.5s ease;">
+                            <div id="video-overlay-{{ $index }}" class="absolute inset-0 z-10 cursor-pointer transition-opacity duration-500" onclick="togglePlay({{ $index }})" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; cursor: pointer; background-color: black; transition: opacity 0.4s ease;">
                                 <!-- Thumbnail Image with Fallback -->
                                 <img src="https://img.youtube.com/vi/{{ $vidId }}/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/{{ $vidId }}/hqdefault.jpg'" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" alt="Video Thumbnail" />
                                 
@@ -42,10 +42,18 @@
                                 <div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.3); transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='rgba(0,0,0,0.1)'" onmouseout="this.style.backgroundColor='rgba(0,0,0,0.3)'"></div>
 
                                 <!-- Play Button -->
-                                <div class="absolute inset-0 flex items-center justify-center" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                                <div id="play-btn-{{ $index }}" class="absolute inset-0 flex items-center justify-center" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
                                     <div class="bg-primary-600/90 rounded-full flex items-center justify-center text-white shadow-xl" style="width: 5rem; height: 5rem; background-color: rgba(242, 101, 34, 0.9); border-radius: 9999px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                                         <svg style="width: 2.5rem; height: 2.5rem; margin-left: 0.25rem;" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     </div>
+                                </div>
+                                
+                                <!-- Loading Spinner -->
+                                <div id="loading-spinner-{{ $index }}" class="absolute inset-0 flex items-center justify-center" style="position: absolute; inset: 0; display: none; align-items: center; justify-content: center;">
+                                    <svg class="animate-spin" style="width: 4rem; height: 4rem; color: white;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
                                 </div>
                             </div>
 
@@ -111,6 +119,9 @@
                     if (state === YT.PlayerState.PLAYING) {
                         players[index].pauseVideo();
                     } else {
+                        // Hide play button and show loading spinner immediately on click
+                        document.getElementById('play-btn-' + index).style.display = 'none';
+                        document.getElementById('loading-spinner-' + index).style.display = 'flex';
                         players[index].playVideo();
                     }
                 }
@@ -122,13 +133,16 @@
                 
                 if (event.data == YT.PlayerState.PLAYING) {
                     // Start fading out instantly so it doesn't feel slow
-                    overlay.style.transition = 'opacity 1s ease';
+                    overlay.style.transition = 'opacity 0.4s ease';
                     overlay.style.opacity = '0';
                     setTimeout(function() { 
                         if(players[index].getPlayerState() === YT.PlayerState.PLAYING) {
                             overlay.style.display = 'none'; 
+                            // Reset play button and spinner for next time
+                            document.getElementById('play-btn-' + index).style.display = 'flex';
+                            document.getElementById('loading-spinner-' + index).style.display = 'none';
                         }
-                    }, 1000);
+                    }, 400);
                     shield.style.display = 'block';
                     shield.style.zIndex = '20'; // bring above iframe
                 } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.UNSTARTED) {
@@ -138,6 +152,12 @@
                     setTimeout(function() { overlay.style.opacity = '1'; }, 10);
                     shield.style.display = 'none';
                     shield.style.zIndex = '0';
+                    
+                    document.getElementById('play-btn-' + index).style.display = 'flex';
+                    document.getElementById('loading-spinner-' + index).style.display = 'none';
+                } else if (event.data == YT.PlayerState.BUFFERING) {
+                    document.getElementById('play-btn-' + index).style.display = 'none';
+                    document.getElementById('loading-spinner-' + index).style.display = 'flex';
                 }
             }
         </script>
