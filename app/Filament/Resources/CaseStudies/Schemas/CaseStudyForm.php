@@ -76,7 +76,7 @@ class CaseStudyForm
                         ->columnSpanFull(),
                 ]),
 
-            Section::make('الوسائط')
+            Section::make('الوسائط وفيديوهات يوتيوب')
                 ->schema([
                     FileUpload::make('featured_image')
                         ->label('الصورة البارزة')
