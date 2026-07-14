@@ -34,13 +34,16 @@
                             <div id="youtube-player-{{ $index }}" class="w-full h-full pointer-events-none" style="width: 100%; height: 100%; pointer-events: none;"></div>
                             
                             <!-- Solid Overlay Shield with Thumbnail (Hides YouTube UI entirely) -->
-                            <div id="video-overlay-{{ $index }}" class="absolute inset-0 z-10 cursor-pointer transition-opacity duration-300" onclick="togglePlay({{ $index }})" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; cursor: pointer; background-color: black; background-image: url('https://img.youtube.com/vi/{{ $vidId }}/maxresdefault.jpg'); background-size: cover; background-position: center; transition: opacity 0.3s ease;">
+                            <div id="video-overlay-{{ $index }}" class="absolute inset-0 z-10 cursor-pointer transition-opacity duration-500" onclick="togglePlay({{ $index }})" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; cursor: pointer; background-color: black; transition: opacity 0.5s ease;">
+                                <!-- Thumbnail Image with Fallback -->
+                                <img src="https://img.youtube.com/vi/{{ $vidId }}/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/{{ $vidId }}/hqdefault.jpg'" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" alt="Video Thumbnail" />
+                                
                                 <!-- Dark overlay to make play button visible -->
                                 <div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.3); transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='rgba(0,0,0,0.1)'" onmouseout="this.style.backgroundColor='rgba(0,0,0,0.3)'"></div>
 
                                 <!-- Play Button -->
                                 <div class="absolute inset-0 flex items-center justify-center" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
-                                    <div class="bg-primary-600/90 rounded-full flex items-center justify-center text-white shadow-xl" style="width: 4.5rem; height: 4.5rem; background-color: rgba(242, 101, 34, 0.9); border-radius: 9999px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                    <div class="bg-primary-600/90 rounded-full flex items-center justify-center text-white shadow-xl" style="width: 5rem; height: 5rem; background-color: rgba(242, 101, 34, 0.9); border-radius: 9999px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                                         <svg style="width: 2.5rem; height: 2.5rem; margin-left: 0.25rem;" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     </div>
                                 </div>
@@ -50,7 +53,7 @@
                             <div id="playing-shield-{{ $index }}" class="absolute inset-0 cursor-pointer" onclick="togglePlay({{ $index }})" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; cursor: pointer; display: none;">
                                 <!-- Pause Button (appears on hover when playing) -->
                                 <div id="pause-btn-{{ $index }}" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background-color: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                                    <div style="width: 4.5rem; height: 4.5rem; background-color: rgba(0, 0, 0, 0.7); border-radius: 9999px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                                    <div style="width: 5rem; height: 5rem; background-color: rgba(0, 0, 0, 0.7); border-radius: 9999px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
                                         <svg style="width: 2.5rem; height: 2.5rem;" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                                     </div>
                                 </div>
@@ -118,17 +121,17 @@
                 var shield = document.getElementById('playing-shield-' + index);
                 
                 if (event.data == YT.PlayerState.PLAYING) {
-                    // Hide overlay, show invisible shield to catch clicks for pausing
-                    overlay.style.opacity = '0';
+                    // Delay hiding the overlay by 2 seconds to wait for YouTube UI to natively fade out
                     setTimeout(function() { 
                         if(players[index].getPlayerState() === YT.PlayerState.PLAYING) {
-                            overlay.style.display = 'none'; 
+                            overlay.style.opacity = '0';
+                            setTimeout(function() { overlay.style.display = 'none'; }, 500); 
                         }
-                    }, 300);
+                    }, 2000);
                     shield.style.display = 'block';
                     shield.style.zIndex = '20'; // bring above iframe
                 } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.UNSTARTED) {
-                    // Show overlay again to completely hide YouTube UI
+                    // Show overlay again instantly to completely hide YouTube UI
                     overlay.style.display = 'block';
                     setTimeout(function() { overlay.style.opacity = '1'; }, 10);
                     shield.style.display = 'none';
