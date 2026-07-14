@@ -25,7 +25,9 @@ Route::any('/', function () {
 Route::get('/run-migrations', function () {
     \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
     \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'MarketingServiceSeeder', '--force' => true]);
-    return 'Migrations and Seeders ran successfully. <a href="/">Go back</a>';
+    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+    \Illuminate\Support\Facades\Artisan::call('filament:clear-cached-components');
+    return 'Migrations, Seeders, and Cache Clearing ran successfully. <a href="/">Go back</a>';
 });
 
 // Fallback route to serve uploaded files on Shared Hosting if they use /uploads/
