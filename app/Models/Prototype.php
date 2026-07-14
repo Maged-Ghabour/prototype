@@ -40,12 +40,14 @@ class Prototype extends Model
         'thumbnail',
         'status',
         'sort_order',
+        'youtube_videos',
     ];
 
     protected $casts = [
         'is_public' => 'boolean',
         'is_visible_on_home' => 'boolean',
         'status' => \App\Enums\PrototypeStatus::class,
+        'youtube_videos' => 'array',
     ];
 
     // ── Boot: توليد الـ slug تلقائياً ─────────────────────────────

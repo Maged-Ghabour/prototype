@@ -211,6 +211,26 @@ class PrototypeForm
                         ])
                         ->columnSpanFull(),
                 ]),
+
+            Section::make('الوسائط وفيديوهات يوتيوب')
+                ->description('إضافة فيديوهات يوتيوب مع إخفاء الشعار أو أي بيانات عن يوتيوب.')
+                ->icon('heroicon-o-video-camera')
+                ->schema([
+                    \Filament\Forms\Components\Repeater::make('youtube_videos')
+                        ->label('فيديوهات يوتيوب')
+                        ->schema([
+                            TextInput::make('url')
+                                ->label('رابط الفيديو')
+                                ->url()
+                                ->required()
+                                ->placeholder('https://www.youtube.com/watch?v=...')
+                                ->extraInputAttributes(['dir' => 'ltr']),
+                        ])
+                        ->addActionLabel('إضافة فيديو جديد')
+                        ->reorderable()
+                        ->collapsible()
+                        ->columnSpanFull(),
+                ]),
         ]);
     }
 }
