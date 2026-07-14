@@ -27,9 +27,15 @@
             <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
                 @foreach($prototype->youtube_videos as $index => $video)
                     @if(isset($video['url']))
-                        @php $vidId = getYoutubeId($video['url']); @endphp
+                        @php 
+                            $vidId = getYoutubeId($video['url']); 
+                            $isShort = strpos($video['url'], '/shorts/') !== false;
+                            $aspectRatio = $isShort ? '9/16' : '16/9';
+                            $maxWidth = $isShort ? '260px' : '380px';
+                            $flexBasis = $isShort ? '220px' : '340px';
+                        @endphp
                         @if($vidId)
-                        <div class="relative rounded-2xl overflow-hidden shadow-2xl group bg-black aspect-video" style="position: relative; width: 100%; flex: 1 1 340px; max-width: 380px; border-radius: 1rem; overflow: hidden; background: black; aspect-ratio: 16/9; border: 1px solid #e5e7eb; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl group bg-black" style="position: relative; width: 100%; flex: 1 1 {{ $flexBasis }}; max-width: {{ $maxWidth }}; border-radius: 1rem; overflow: hidden; background: black; aspect-ratio: {{ $aspectRatio }}; border: 1px solid #e5e7eb; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
                             <!-- YouTube Player Container -->
                             <div id="youtube-player-{{ $index }}" class="w-full h-full pointer-events-none" style="width: 100%; height: 100%; pointer-events: none;"></div>
                             
