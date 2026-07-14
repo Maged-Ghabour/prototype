@@ -8,6 +8,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Repeater;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
@@ -91,6 +92,21 @@ class CaseStudyForm
                         ->disk('public')
                         ->directory('case-studies/gallery')
                         ->reorderable()
+                        ->columnSpanFull(),
+
+                    Repeater::make('youtube_videos')
+                        ->label('فيديوهات يوتيوب')
+                        ->schema([
+                            TextInput::make('url')
+                                ->label('رابط الفيديو')
+                                ->url()
+                                ->required()
+                                ->placeholder('https://www.youtube.com/watch?v=...')
+                                ->extraInputAttributes(['dir' => 'ltr']),
+                        ])
+                        ->addActionLabel('إضافة فيديو جديد')
+                        ->reorderable()
+                        ->collapsible()
                         ->columnSpanFull(),
                 ]),
         ]);

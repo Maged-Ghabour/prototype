@@ -21,11 +21,13 @@ class CaseStudy extends Model
         'gallery_images',
         'prototype_id',
         'is_published',
+        'youtube_videos',
     ];
 
     protected $casts = [
         'is_published' => 'boolean',
         'gallery_images' => 'array',
+        'youtube_videos' => 'array',
     ];
 
     protected static function boot(): void
